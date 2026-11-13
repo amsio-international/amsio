@@ -10,13 +10,13 @@ import { useI18n } from "@/lib/i18n";
 
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
-/* ─── Register button (direct link to /portal/register) ──────────────────── */
+/* ─── Register button (links to exam registration on amsio.io) ───────────── */
 
 function RegisterDropdown() {
   const { t } = useI18n();
   return (
     <Link
-      href="/contact"
+      href="https://amsio.io/en/exam/register"
       className="hidden md:flex items-center gap-1.5 px-4 py-2 text-sm font-semibold text-white bg-orange hover:bg-orange/90 rounded-full transition-all shadow-sm"
     >
       {t.nav.register}
@@ -195,7 +195,7 @@ export default function Navbar() {
                 {/* Register (student/school) — hidden in partner-only phase */}
                 {SHOW_STUDENT_REGISTRATION && (
                   <Link
-                    href="/contact"
+                    href="https://amsio.io/en/exam/register"
                     onClick={() => setMobileOpen(false)}
                     className="flex items-center justify-center gap-2 w-full px-4 py-3.5 rounded-xl bg-orange text-white font-semibold text-sm hover:bg-orange/90 transition-colors"
                   >

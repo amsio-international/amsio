@@ -45,6 +45,7 @@
 
 ## Hosting Gotchas (learned the hard way)
 - Repo is **PUBLIC on purpose**: Vercel Hobby blocks deployments of private repos when the commit author is not the Vercel account owner ("commit author does not have contributing access"). Making it private again requires Vercel Pro. So: NEVER commit secrets, passwords, tokens or account lists to this repo (incl. this file).
+- Register button (Navbar) links externally to https://amsio.io/en/exam/register — do not change to an internal route.
 - Supabase Storage bucket `cms-assets` MUST stay `public = true`. Article covers are served from `/storage/v1/object/public/cms-assets/...`; if the bucket is private the images break (404 "Bucket not found"). Uploads go through `/api/v1/cms/media` using the service-role key.
 - Chatbot (`src/app/api/v1/chatbox/route.ts`): `max_tokens` / `maxOutputTokens` = 1024. It was 400 and answers were cut off mid-sentence — do not lower it. Tries Claude first, falls back to Gemini. As of 2026-08-28 Vercel only had `GEMINI_API_KEY` (no `ANTHROPIC_API_KEY` / `UPSTASH_*`), so it runs on Gemini with in-memory rate limiting.
 - `/cms/login` just redirects to `/portal/login` (single shared login form); `marketing_staff` users are sent to `/cms` after sign-in.
